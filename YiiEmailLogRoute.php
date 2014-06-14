@@ -17,9 +17,9 @@ class YiiEmailLogRoute extends CEmailLogRoute
      */
     protected function sendEmail($email,$subject,$message)
     {
-        $message = "URL: ".$_SERVER['SERVER_NAME']."<br>"
-            . "REQUEST_URI: ".$_SERVER['REQUEST_URI']."<br>"
-            . "HTTP_REFERER: ".$_SERVER['HTTP_REFERER']."<br><br>"
+        $message = "URL: ".(isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : false)."<br>"
+            . "REQUEST_URI: ".(isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : false)."<br>"
+            . "HTTP_REFERER: ".(isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : false)."<br><br>"
             . $message;
 
         $headers=$this->getHeaders();
